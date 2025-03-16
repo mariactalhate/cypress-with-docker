@@ -29,4 +29,4 @@ Siga os passos abaixo para configurar o ambiente e começar a usar o Cypress com
    ```bash
    docker run -it --rm -v .:/app -w /app cypress/included
 
-Isso irá rodar o Cypress dentro do contêiner
+Isso irá rodar o Cypress dentro do container
