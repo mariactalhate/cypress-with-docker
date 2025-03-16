@@ -4,7 +4,9 @@ describe('Teste de API da requisição PATCH https://api.restful-api.dev/objects
       })
 
     it('Deve atualizar um campo específico de um objeto', () => {
+        cy.log('Envia requisição PATCH válida')
         cy.makeRequest('PATCH', '/objects/ff808181932badb601959ffd5bc85e43', {"name": "Notebook da maria"}).then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(200)
             expect(response.body).to.haveOwnProperty('id')
@@ -16,7 +18,9 @@ describe('Teste de API da requisição PATCH https://api.restful-api.dev/objects
     })
 
     it('Deve tentar atualizar um objeto que possui ID reservada', () => {
+        cy.log('Envia requisição PATCH para objeto com ID reservada')
         cy.makeRequest('PATCH', '/objects/7', {"name": "Notebook da maria"}).then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(405)
             expect(response.body).to.be.an('Object')
@@ -26,7 +30,9 @@ describe('Teste de API da requisição PATCH https://api.restful-api.dev/objects
     })
 
     it('Deve tentar atualizar um objeto sem enviar campos necessários', () => {
+        cy.log('Envia requisição PATCH sem campos necessários')
         cy.makeRequest('PATCH', '/objects/ff808181932badb601959ffd5bc85e43').then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(400)
             expect(response.body).to.be.an('Object')

@@ -1,6 +1,6 @@
 describe('Teste 2E2 do componente Drag and Drop', () => {
   before(() => {
-    Cypress.config('baseUrl', 'https://the-internet.herokuapp.com');
+    Cypress.config('baseUrl', 'https://the-internet.herokuapp.com')
   })
 
   beforeEach(() => {
@@ -22,11 +22,14 @@ describe('Teste 2E2 do componente Drag and Drop', () => {
   })
 
   it('Valida estado inicial dos elementos', () => {
+    cy.log('Valida que a primeira coluna contem dado A')
     cy.get('div[class="column"]').eq(0).should('contain', 'A')
+    cy.log('Valida que a segunda coluna contem dado B')
     cy.get('div[class="column"]').eq(1).should('contain', 'B')
   })
 
   it('Deve validar interatividade dos elementos', () => {
+    cy.log('Cria constante do tipo DataTransfer')
     const dataTransfer = new DataTransfer();
     cy.log('Arrastar coluna A para coluna B')
     cy.get('div[class="column"]').eq(0).trigger('dragstart', { dataTransfer });

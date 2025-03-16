@@ -4,8 +4,11 @@ describe('Teste de API da requisição GET https://api.restful-api.dev/objects',
       })
 
     it('Deve listar todos os objetos', () => {
+        cy.log('Busca fixture para comparação com response')
         cy.fixture('getObjects.json').then((expectedObjects) => {
+            cy.log('Envia requisição de listagem')
             cy.makeRequest('GET', '/objects').then((response) => {
+                cy.log('Valida status e campos da requisição')
                 cy.log(JSON.stringify(response.body))
                 expect(response.status).to.eq(200)
                 expect(response.body).to.be.an('array')
@@ -18,7 +21,9 @@ describe('Teste de API da requisição GET https://api.restful-api.dev/objects',
     })
 
     it('Deve listar um range específico de objetos', () => {
+        cy.log('Envia requisição de listagem por range válido')
         cy.makeRequest('GET', '/objects?id=3&id=5&id=10').then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(200)
             expect(response.body).to.be.an('array')
@@ -35,7 +40,9 @@ describe('Teste de API da requisição GET https://api.restful-api.dev/objects',
     })
 
     it('Deve buscar range inexistente', () => {
+        cy.log('Envia requisição de listagem por range inválido')
         cy.makeRequest('GET', '/objects?id=500&id=1000').then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(200)
             expect(response.body).to.be.an('array')
@@ -44,7 +51,9 @@ describe('Teste de API da requisição GET https://api.restful-api.dev/objects',
     })
 
     it('Deve listar objeto pela ID', () => {
+        cy.log('Envia requisição de listagem por ID válida')
         cy.makeRequest('GET', '/objects/7').then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(200)
             expect(response.body).to.be.an('Object')
@@ -56,7 +65,9 @@ describe('Teste de API da requisição GET https://api.restful-api.dev/objects',
     })
 
     it('Deve buscar ID inexistente', () => {
+        cy.log('Envia requisição de listagem por ID inválida')
         cy.makeRequest('GET', '/objects/500').then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(404)
             expect(response.body).to.be.an('Object')

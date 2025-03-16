@@ -33,3 +33,11 @@ Cypress.Commands.add('makeRequest', (method, url, body, headers = {}) => {
         failOnStatusCode: false 
       })
 })
+
+Cypress.Commands.add('makeLogin', () => {
+    cy.intercept('POST', '/authenticate').as('authenticationRequest');
+      cy.get('input').eq(0).type('tomsmith')
+      cy.get('input').eq(1).type('SuperSecretPassword!')
+      cy.get('button').click()
+      cy.wait('@authenticationRequest');
+})

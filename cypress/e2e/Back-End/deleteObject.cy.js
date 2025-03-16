@@ -4,10 +4,13 @@ describe('Teste de API da requisição DELETE https://api.restful-api.dev/object
       })
 
     it('Deve deletar um objeto', () => {
-
+        cy.log('Cria fixture com body de objeto a ser criado')
         cy.fixture('postObject.json').then((newObject) => {
+            cy.log('Cria novo objeto')
             cy.makeRequest('POST', '/objects', newObject).then((object) => {
+                cy.log('Deleta objeto criado')
                 cy.makeRequest('DELETE', `/objects/${object.body.id}`).then((response) => {
+                    cy.log('Valida status e campos da requisição')
                     cy.log(JSON.stringify(response.body))
                     expect(response.status).to.eq(200)
                     expect(response.body).to.be.an('Object')
@@ -19,7 +22,9 @@ describe('Teste de API da requisição DELETE https://api.restful-api.dev/object
     })
 
     it('Deve tentar deletar um objeto que possui ID reservada', () => {
+        cy.log('Envia requisição de deleção para objeto reservado')
         cy.makeRequest('DELETE', '/objects/7').then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(405)
             expect(response.body).to.be.an('Object')
@@ -29,7 +34,9 @@ describe('Teste de API da requisição DELETE https://api.restful-api.dev/object
     })
 
     it('Deve tentar atualizar um objeto sem enviar campos necessários', () => {
+        cy.log('Envia requisição sem campo de ID')
         cy.makeRequest('DELETE', '/objects').then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(405)
             expect(response.body).to.be.an('Object')

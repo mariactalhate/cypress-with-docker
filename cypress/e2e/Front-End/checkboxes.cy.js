@@ -1,7 +1,7 @@
 describe('Teste 2E2 do componente Checkbox', () => {
 
   before(() => {
-    Cypress.config('baseUrl', 'https://the-internet.herokuapp.com');
+    Cypress.config('baseUrl', 'https://the-internet.herokuapp.com')
   })
 
   beforeEach(() => {
@@ -32,7 +32,6 @@ describe('Teste 2E2 do componente Checkbox', () => {
     cy.log('Desmarca a primeira checkbox')
     cy.get('input[type="checkbox"]').eq(0).uncheck()
     cy.get('input[type="checkbox"]').eq(0).should('not.be.checked')
-
     cy.log('Desmarca a segunda checkbox')
     cy.get('input[type="checkbox"]').eq(1).uncheck()
     cy.get('input[type="checkbox"]').eq(1).should('not.be.checked')

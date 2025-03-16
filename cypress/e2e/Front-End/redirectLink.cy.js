@@ -1,9 +1,9 @@
 describe('Teste 2E2 do componente Redirect', () => {
 
   before(() => {
-    Cypress.config('baseUrl', 'https://the-internet.herokuapp.com');
+    Cypress.config('baseUrl', 'https://the-internet.herokuapp.com')
   })
-  
+
   beforeEach(() => {
     cy.log('Acessa a webpage')
     cy.visit('/redirector')
@@ -20,9 +20,11 @@ describe('Teste 2E2 do componente Redirect', () => {
   })
 
   it('Deve validar interatividade do redirect', () => {
+    cy.log('Intercepta request de redirecionamento')
     cy.intercept('GET', '/redirect').as('redirectRequest');
     cy.log('Clica no elemento redirect')
     cy.get('a[id="redirect"]').click()
+    cy.log('Aguarda redirecionamento')
     cy.wait('@redirectRequest')
     cy.log('Valida que foi redirecionado para a página de status codes')
     cy.url().should('include', '/status_codes')

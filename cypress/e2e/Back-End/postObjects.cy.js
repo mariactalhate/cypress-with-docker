@@ -4,8 +4,10 @@ describe('Teste de API da requisição POST https://api.restful-api.dev/objects'
       })
 
     it('Deve incluir novo objeto', () => {
+        cy.log('Busca fixture e cria novo objeto')
         cy.fixture('postObject.json').then((newObject) => {
             cy.makeRequest('POST', '/objects', newObject).then((response) => {
+                cy.log('Valida status e campos da requisição')
                 cy.log(JSON.stringify(response.body))
                 expect(response.status).to.eq(200)
                 expect(response.body).to.haveOwnProperty('id')
@@ -18,7 +20,9 @@ describe('Teste de API da requisição POST https://api.restful-api.dev/objects'
     })
 
     it('Deve tentar incluir novo objeto, sem enviar campos necessários', () => {
+        cy.log('Envia requisição POST sem campos necessários')
         cy.makeRequest('POST', '/objects').then((response) => {
+            cy.log('Valida status e campos da requisição')
             cy.log(JSON.stringify(response.body))
             expect(response.status).to.eq(400)
             expect(response.body).to.be.an('Object')
