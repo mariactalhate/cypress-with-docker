@@ -1,6 +1,6 @@
 describe('Teste 2E2 do componente Dropdown', () => {
   before(() => {
-    Cypress.config('baseUrl', 'https://the-internet.herokuapp.com');
+    Cypress.config('baseUrl', 'https://the-internet.herokuapp.com')
   })
 
   beforeEach(() => {

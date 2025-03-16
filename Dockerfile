@@ -1,9 +1,9 @@
 #Base image taken from:https://github.com/cypress-io/cypress-docker-images
 FROM cypress/included:latest
 #Create the folder where our project will be stored
-RUN mkdir /cypress-with-docker
+RUN mkdir /cypress-with-dockerr
 #We make it our workdirectory
-WORKDIR /cypress-with-dockerdocker
+WORKDIR /cypress-with-dockerr
 #Let's copy the essential files that we MUST use to run our scripts.
 COPY package*.json ./
 #####
