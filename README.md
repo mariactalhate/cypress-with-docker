@@ -1,12 +1,12 @@
 # Cypress with Docker
 
-Este repositório demonstra como configurar o [Cypress](https://www.cypress.io/) com o [Docker](https://www.docker.com/) para executar testes automatizados de frontend em ambientes de contêineres.
+Este repositório demonstra como configurar o [Cypress](https://www.cypress.io/) com o [Docker](https://www.docker.com/) para executar testes automatizados de frontend e backend em ambientes de contêineres.
 
 ## Pré-requisitos
 
 Antes de começar, você precisará ter os seguintes itens instalados na sua máquina:
 
-- [Docker](https://www.docker.com/products/docker-desktop)
+- [Docker](https://rancherdesktop.io/)
 - [Node.js](https://nodejs.org/) (opcional, se você quiser rodar o Cypress fora do Docker)
 
 ---
